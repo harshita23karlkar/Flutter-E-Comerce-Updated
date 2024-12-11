@@ -57,7 +57,7 @@ class _HomepageState extends State<Homepage> {
                       height: 20,
                     ),
                     // Carouser images
-                    MyCarouserSlider(),
+                    const MyCarouserSlider(),
                     const SizedBox(
                       height: 15.0,
                     ),
@@ -66,7 +66,7 @@ class _HomepageState extends State<Homepage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Productspage(),
+                          builder: (context) => const Productspage(),
                         ),
                       );
                     }),
@@ -82,7 +82,7 @@ class _HomepageState extends State<Homepage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Productspage(),
+                          builder: (context) => const Productspage(),
                         ),
                       );
                     }),

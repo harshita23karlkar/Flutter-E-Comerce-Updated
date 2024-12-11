@@ -37,7 +37,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     backgroundColor: Colors.white,
                     child: IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(Icons.arrow_back, color: Colors.black),
+                      icon: const Icon(Icons.arrow_back, color: Colors.black),
                     ),
                   ),
                 ),
@@ -48,7 +48,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     backgroundColor: Colors.white,
                     child: IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.favorite_border, color: Colors.black),
+                      icon: const Icon(Icons.favorite_border,
+                          color: Colors.black),
                     ),
                   ),
                 ),
@@ -123,7 +124,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         data.description,
                         style: const TextStyle(
                             fontSize: 15,
-                            color: const Color.fromARGB(255, 87, 85, 85)),
+                            color: Color.fromARGB(255, 87, 85, 85)),
                       ),
                       const SizedBox(height: 15),
                       // size options
@@ -183,7 +184,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             ),
                             child: IconButton(
                               onPressed: () {},
-                              icon: Icon(Icons.shopping_bag_outlined),
+                              icon: const Icon(Icons.shopping_bag_outlined),
                             ),
                           ),
                         ],
@@ -194,7 +195,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               ],
             ),
           ),
-          BottomNavBar(),
+          const BottomNavBar(),
         ],
       ),
     );

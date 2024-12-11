@@ -11,7 +11,7 @@ class MyCarouserSlider extends StatefulWidget {
 }
 
 class _MyCarouserSliderState extends State<MyCarouserSlider> {
-  var _list = [1, 2, 3, 4, 5];
+  final _list = [1, 2, 3, 4, 5];
   int currentIndexPage = 0;
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _MyCarouserSliderState extends State<MyCarouserSlider> {
                   currentIndexPage = index;
                 });
               },
-              autoPlayInterval: Duration(seconds: 2)),
+              autoPlayInterval: const Duration(seconds: 2)),
           items: _list.map((i) {
             return Builder(
               builder: (BuildContext context) {
@@ -49,7 +49,7 @@ class _MyCarouserSliderState extends State<MyCarouserSlider> {
             );
           }).toList(),
         ),
-        new DotsIndicator(
+        DotsIndicator(
           dotsCount: _list.length,
           position: currentIndexPage,
         ),

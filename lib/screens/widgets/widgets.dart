@@ -1,13 +1,46 @@
+import 'package:e_commerce_app/api_services/user_cart_api.dart';
+import 'package:e_commerce_app/models/cart_model.dart';
+import 'package:e_commerce_app/screens/HomePage.dart';
+import 'package:e_commerce_app/screens/UserCartPage.dart';
 import 'package:flutter/material.dart';
 
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
 
+  @override
+  State<BottomNavBar> createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  int _correntIndex = 0;
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      currentIndex: 0,
+      onTap: (index) {
+        setState(() {
+          _correntIndex = index;
+        });
+        if (index == 0) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Homepage(),
+              ));
+        } else if (index == 1) {
+          print("Search selected");
+        } else if (index == 2) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const UserCartPage(),
+            ),
+          );
+        } else if (index == 3) {
+          print("Profile selected");
+        }
+      },
+      currentIndex: _correntIndex,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
         BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
@@ -42,7 +75,8 @@ class AppBarW extends StatelessWidget {
           const Text("Hello!",
               style: TextStyle(fontSize: 16, color: Colors.grey)),
           Text(userName,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              style:
+                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         ],
       ),
       actions: [

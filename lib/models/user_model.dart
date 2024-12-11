@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:e_commerce_app/api_services/user_api.dart';
 import 'package:flutter/material.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserModel extends ChangeNotifier {
@@ -12,7 +13,7 @@ class UserModel extends ChangeNotifier {
   }
 
   String getUserName() {
-    return this.username ?? "username";
+    return username ?? "username";
   }
 
   bool isuserLogIn = false;
@@ -22,9 +23,9 @@ class UserModel extends ChangeNotifier {
       // this.username = username;
       // this.password = password;
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      print("wieruyoweiue9i7uwo9r78w ye mere wala $token");
+      // print("wieruyoweiue9i7uwo9r78wa $token");
       await prefs.setString("token", jsonEncode(token));
-      print(isUserLoggedIn);
+      // print(isUserLoggedIn);
       return true;
     } catch (e) {
       return "login failed $e";
@@ -43,5 +44,15 @@ class UserModel extends ChangeNotifier {
       isuserLogIn = false;
     }
     return isUserIn;
+  }
+
+// user id from token
+  getUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString("token");
+    var arr = token!.split('"');
+    String userToken = arr[3];
+    Map<String, dynamic> decodedToken = JwtDecoder.decode(userToken);
+    return decodedToken["sub"];
   }
 }

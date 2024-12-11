@@ -36,7 +36,7 @@ Widget buildHorizontalList(List<ProductModel> products) {
         final product = products[index];
         return buildProductCard(product);
       },
-      separatorBuilder: (context, index) => SizedBox(width: 10),
+      separatorBuilder: (context, index) => const SizedBox(width: 10),
     ),
   );
 }

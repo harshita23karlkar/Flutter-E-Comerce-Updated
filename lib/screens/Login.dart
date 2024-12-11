@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
+  const Login({super.key});
+
   @override
   State<Login> createState() => _LoginState();
 }
@@ -19,7 +21,7 @@ class _LoginState extends State<Login> {
 
   final TextEditingController passwordController =
       TextEditingController(text: kDebugMode ? "83r5^_" : "");
-  List<int> _list = [1, 2, 3, 4, 5];
+  final List<int> _list = [1, 2, 3, 4, 5];
   CarouselSliderController carouselController = CarouselSliderController();
   int currentIndexPage = 0;
   @override
@@ -44,7 +46,7 @@ class _LoginState extends State<Login> {
                       height: 200.0,
                       autoPlay: false,
                       viewportFraction: 0.9,
-                      autoPlayInterval: Duration(seconds: 2)),
+                      autoPlayInterval: const Duration(seconds: 2)),
                   items: _list.map((i) {
                     return Builder(
                       builder: (BuildContext context) {
@@ -56,7 +58,7 @@ class _LoginState extends State<Login> {
                             child: Center(
                               child: Text(
                                 'text $i',
-                                style: TextStyle(fontSize: 16.0),
+                                style: const TextStyle(fontSize: 16.0),
                               ),
                             ));
                       },
@@ -106,7 +108,7 @@ class _LoginState extends State<Login> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
 
                 // Username TextField
                 CustomTextField(
@@ -115,7 +117,7 @@ class _LoginState extends State<Login> {
                   hintText: "Type your username",
                   controller: usernameController,
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
 
                 // Password TextField
                 CustomTextField(
@@ -125,7 +127,7 @@ class _LoginState extends State<Login> {
                   isPassword: true,
                   controller: passwordController,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 // Forgot Password
                 Align(
@@ -141,7 +143,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Login Button
                 Consumer<UserModel>(
@@ -154,7 +156,7 @@ class _LoginState extends State<Login> {
                       value.userLogin(username, password);
                       value.setUserName(username);
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => Homepage(),
+                        builder: (context) => const Homepage(),
                       ));
 
                       print(username);
@@ -162,17 +164,17 @@ class _LoginState extends State<Login> {
                     },
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Social Login
                 const Text(
                   "Or Sign Up Using",
                   style: TextStyle(color: Colors.grey),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 SocialButtons(),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Sign Up
                 TextButton(
@@ -204,6 +206,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
 
   const CustomTextField({
+    super.key,
     required this.label,
     required this.icon,
     required this.hintText,
@@ -234,7 +237,8 @@ class GradientButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
-  const GradientButton({required this.text, required this.onPressed});
+  const GradientButton(
+      {super.key, required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -265,6 +269,8 @@ class GradientButton extends StatelessWidget {
 }
 
 class SocialButtons extends StatelessWidget {
+  const SocialButtons({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Row(
@@ -284,7 +290,7 @@ class SocialButton extends StatelessWidget {
   final IconData icon;
   final Color color;
 
-  const SocialButton({required this.icon, required this.color});
+  const SocialButton({super.key, required this.icon, required this.color});
 
   @override
   Widget build(BuildContext context) {
