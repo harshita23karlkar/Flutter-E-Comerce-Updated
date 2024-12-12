@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/models/user_model.dart';
 import 'package:e_commerce_app/provider/product_provider.dart';
 import 'package:e_commerce_app/provider/userCart_provider.dart';
+import 'package:e_commerce_app/provider/user_provider.dart';
 import 'package:e_commerce_app/screens/HomePage.dart';
 import 'package:e_commerce_app/screens/Login.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,10 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (context) => UsercartProvider(),
-          )
+          ),
+          ChangeNotifierProvider(
+            create: (context) => UserProvider(),
+          ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

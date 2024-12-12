@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/provider/userCart_provider.dart';
+import 'package:e_commerce_app/screens/CheckOutPage.dart';
 import 'package:e_commerce_app/screens/OrderSummary.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -37,8 +38,17 @@ class _UserCartPageState extends State<UserCartPage> {
         ),
         body: Column(
           children: [
-            Expanded(child: CartProductListW()),
-            OrderSummary(cartProvider: value)
+            const Expanded(child: CartProductListW()),
+            OrderSummary(cartProvider: value),
+            CheckOutButton(
+              myOnPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Checkoutpage(),
+                    ));
+              },
+            ),
           ],
         ),
       ),

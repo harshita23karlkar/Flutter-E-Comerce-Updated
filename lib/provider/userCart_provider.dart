@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/api_services/products_api.dart';
+import 'package:e_commerce_app/api_services/user_api.dart';
 import 'package:e_commerce_app/api_services/user_cart_api.dart';
 import 'package:e_commerce_app/models/cart_model.dart';
 import 'package:e_commerce_app/models/productwithid_model.dart';
@@ -29,14 +30,6 @@ class UsercartProvider extends ChangeNotifier {
   List<Product> productsList = [];
   List<ProductWithIdModel> cartList = [];
   double ammount = 0;
-  void setAmmount(double ammount) {
-    this.ammount = ammount;
-    notifyListeners();
-  }
-
-  double getAmmount() {
-    return this.ammount;
-  }
 
   bool isLoading = false;
 
@@ -47,6 +40,7 @@ class UsercartProvider extends ChangeNotifier {
     notifyListeners();
     await fetchProductsFromCart();
     calculateTotalAmmount();
+    await UserApiService().fetchUserDetails();
   }
 
   void calculateTotalAmmount() {
